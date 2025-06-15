@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="ab.png">
+  <title>IndieMed Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="container">
+    <!-- LOGIN FORM -->
+    <form id="loginForm" action="login.php" method="POST" class="fade-in">
+      <h2>Login</h2>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <button type="submit">Login</button>
+      <p class="switch-text">Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+    </form>
+
+    <!-- REGISTER FORM -->
+    <form id="registerForm" action="register.php" method="POST" class="fade-in" style="display: none;">
+      <h2>Register</h2>
+      <input type="text" name="name" placeholder="Full Name" required><br>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <input type="password" name="password" placeholder="Password" required><br>
+      <div class="alert-tip">
+        💡 <strong>Tip:</strong> Save your password securely on your desktop or use a password manager.
+      </div>
+      <button type="submit">Register</button>
+      <p class="switch-text">Already have an account? <a href="#" onclick="showLogin()">Back to Login</a></p>
+    </form>
+  </div>
+
+  <!-- JavaScript to toggle forms -->
+  <script>
+    function showRegister() {
+      document.getElementById('loginForm').style.display = 'none';
+      const regForm = document.getElementById('registerForm');
+      regForm.style.display = 'block';
+      regForm.classList.add('fade-in');
+      regForm.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function showLogin() {
+      document.getElementById('registerForm').style.display = 'none';
+      const loginForm = document.getElementById('loginForm');
+      loginForm.style.display = 'block';
+      loginForm.classList.add('fade-in');
+      loginForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

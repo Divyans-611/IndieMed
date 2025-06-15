@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="ab.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment | IndieMed</title>
+  
+  
+  <link rel="stylesheet" href="appoint.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Book an Appointment</h1>
+    <p id="form-message"></p>
+
+    <form id="appointment-form" action="appointment.php" method="POST">
+      <div class="form-group">
+        <label for="full_name">Full Name*</label>
+        <input type="text" id="full_name" name="full_name" required />
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth*</label>
+        <input type="date" id="dob" name="dob" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone*</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+      <div class="form-group">
+        <label for="doctor">Doctor*</label>
+        <select id="doctor" name="doctor" required>
+          <option value="">Select Doctor</option>
+          <option value="Dr. Ram">Dr. Ram - Cardiology</option>
+<option value="Dr. Rina">Dr. Rina - Gynocologist</option>
+<option value="Dr. Ganesh">Dr. Ganesh - Dermatologist</option>
+<option value="Dr. Appa">Dr. Appa - ENT</option>
+<option value="Dr. Sanket">Dr. Sanket - Pediatrics</option>
+<option value="Dr. Ashwin">Dr. Ashwin - Cardiology</option>
+<option value="Dr. Tushar">Dr. Tushar - Dermatologist</option>
+<option value="Dr. Shivani">Dr. Shivani - Gynacologist</option>
+<option value="Dr. Piyush">Dr. Piyush - ENT</option>
+<option value="Dr. Dhanraj">Dr. Dhanraj - Pediatrics</option>
+<option value="Dr. Rani">Dr. Rani - Cardiology</option>
+<option value="Dr. Dhanshree">Dr. Dhanshree - Pediatrics</option>
+<option value="Dr. Radheshyam">Dr. Radheshyam - Dermatologist</option>
+<option value="Dr. Abhishek">Dr. Abhishek - Gynacologist</option>
+<option value="Dr. Kalyani">Dr. Kalyani - ENT</option>
+<option value="Dr. Priya">Dr. Priya - Pediatrics</option>
+<option value="Dr. Sunita">Dr. Sunita - Cardiology</option>
+<option value="Dr. Rajesh">Dr. Rajesh - Gynacologist</option>
+<option value="Dr. Namrata">Dr. Namrata - ENT</option>
+<option value="Dr. Divyansh">Dr. Divyansh - Dermatologist</option>
+<option value="Dr. Samiksha">Dr. Samiksha - Pediatrics</option>
+<option value="Dr. Ramesh">Dr. Ramesh - Cardiologist</option>
+<option value="Dr. Madhuri">Dr. Madhuri - Pediatrics</option>
+<option value="Dr. Kanchan">Dr. Kanchan - Dermatologist</option>
+<option value="Dr. Suresh">Dr. Suresh - Pediatrics</option>
+<option value="Dr. Dipali">Dr. Dipali - ENT</option>
+<option value="Dr. Nikita">Dr. Nikita - Dermatologist</option>
+<option value="Dr. Sangeeta">Dr. Sangeeta - Cardiologist</option>
+<option value="Dr. Vanshika">Dr. Vanshika - ENT</option>
+<option value="Dr. Prabhakar">Dr. Prabhakar - Gynacologist</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="appointment_date">Date*</label>
+        <input type="date" id="appointment_date" name="appointment_date" required />
+      </div>
+      <div class="form-group">
+        <label for="appointment_time">Time*</label>
+        <select id="appointment_time" name="appointment_time" required>
+          <option value="">Select Time</option>
+          <option value="8:00 AM">8:00 AM</option>
+<option value="9:00 AM">9:00 AM</option>
+<option value="10:00 AM">10:00 AM</option>
+<option value="11:00 AM">11:00 AM</option>
+<option value="12:00 PM">12:00 PM</option>
+<option value="1:00 PM">1:00 PM</option>
+<option value="2:00 PM">2:00 PM</option>
+<option value="3:00 PM">3:00 PM</option>
+<option value="4:00 PM">4:00 PM</option>
+<option value="5:00 PM">5:00 PM</option>
+<option value="6:00 PM">6:00 PM</option>
+<option value="7:00 PM">7:00 PM</option>
+<option value="8:00 PM">8:00 PM</option>
+<option value="9:00 PM">9:00 PM</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="reason">Reason*</label>
+        <textarea id="reason" name="reason" required></textarea>
+      </div>
+      <div class="form-group checkbox">
+        <input type="checkbox" id="existing_patient" name="existing_patient" />
+        <label for="existing_patient">Existing Patient</label>
+      </div>
+      <div class="form-group" id="patient-id-group" style="display: none;">
+        <label for="patient_id">Patient ID</label>
+        <input type="text" id="patient_id" name="patient_id" />
+      </div>
+      <button type="submit">Book Appointment</button>
+    </form>
+
+    <div id="confirmation">
+      <h2>Appointment Confirmed!</h2>
+      <div class="checkmark-animation">✓</div>
+      <button onclick="goHome()">Back to Home</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("appointment-form");
+    const confirmation = document.getElementById("confirmation");
+    const existingCheckbox = document.getElementById("existing_patient");
+    const patientIdGroup = document.getElementById("patient-id-group");
+
+    existingCheckbox.addEventListener("change", function () {
+      patientIdGroup.style.display = this.checked ? "block" : "none";
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const formData = new FormData(form);
+      fetch("appointment.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          form.style.display = "none";
+          confirmation.style.display = "block";
+          document.querySelector(".checkmark-animation").classList.add("animate");
+        })
+        .catch((error) => {
+          alert("There was an error booking your appointment.");
+        });
+    });
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
