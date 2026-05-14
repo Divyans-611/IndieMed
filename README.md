@@ -27,8 +27,10 @@ The project focuses on connecting patients with certified doctors, allowing user
 ## Live Demo
 https://indiemed.infinityfreeapp.com/
 
-## Screenshots
-Screenshots can be added here:
+## Screenshots:
+<img width="1916" height="896" alt="Screenshot 2025-06-15 124549" src="https://github.com/user-attachments/assets/06b48c06-74b9-43e3-b08b-be0d07f10e2a" />
+<img width="1918" height="986" alt="Screenshot 2025-06-15 031258" src="https://github.com/user-attachments/assets/5ffa0c68-682c-4615-b737-3878e0e4c326" />
+
 
 ```txt
 1. Home Page
